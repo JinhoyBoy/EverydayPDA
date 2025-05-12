@@ -1,0 +1,10 @@
+uvicorn
+fastapi
+psycopg2-binary
+asyncpg
+httpx
+requests
+openai
+dotenv
+coverage
+geopy

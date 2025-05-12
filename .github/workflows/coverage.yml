@@ -1,0 +1,53 @@
+name: Update Coverage
+
+on:
+  push: 
+
+permissions:
+  contents: write 
+
+jobs:
+  test_coverage:
+    runs-on: ubuntu-latest
+    environment: test 
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: |
+          find . -mindepth 2 -name "requirements.txt" -exec cat {} \; -exec echo \; | sort -u > requirements.txt
+          pip install -r requirements.txt
+
+      - name: Set Environment Variables
+        run: |
+          pwd
+          touch /home/runner/work/EverydayPDA/EverydayPDA/.env
+          echo "AMADEUS_CLIENT_ID=${{ secrets.AMADEUS_CLIENT_ID }}" >> /home/runner/work/EverydayPDA/EverydayPDA/.env
+          echo "AMADEUS_CLIENT_SECRET=${{ secrets.AMADEUS_CLIENT_SECRET }}" >> /home/runner/work/EverydayPDA/EverydayPDA/.env
+          echo "TWELVE_DATA_API_KEY=${{ secrets.TWELVE_DATA_API_KEY }}" >> /home/runner/work/EverydayPDA/EverydayPDA/.env
+          echo "NEWS_API_KEY=${{ secrets.NEWS_API_KEY }}" >> /home/runner/work/EverydayPDA/EverydayPDA/.env
+          echo "WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }}" >> /home/runner/work/EverydayPDA/EverydayPDA/.env
+          echo "OPENROUTE_API_KEY=${{ secrets.OPENROUTE_API_KEY }}" >> /home/runner/work/EverydayPDA/EverydayPDA/.env
+          echo "AVIATION_STACK_API_KEY=${{ secrets.AVIATION_STACK_API_KEY }}" >> /home/runner/work/EverydayPDA/EverydayPDA/.env
+          echo "TELEGRAM_API_KEY=${{ secrets.TELEGRAM_API_KEY }}" >> /home/runner/work/EverydayPDA/EverydayPDA/.env
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> /home/runner/work/EverydayPDA/EverydayPDA/.env
+          ls -la /home/runner/work/EverydayPDA/EverydayPDA
+
+      - name: Test Coverage Update
+        run: 
+          python test_coverage.py
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Update Test Coverage" || echo "No Changes"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
