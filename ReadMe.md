@@ -59,4 +59,5 @@ However, you need to start [Docker](#docker) for this.
 | **Projekt** | **83.7%** |
 
 #### Original Repo
-  https://github.com/milannal1m/EverydayPDA
+The link to the original Repo, where I was a Collaborator, can be seen here: https://github.com/milannal1m/EverydayPDA
+This Repo has been created for changing the README.md for display.
