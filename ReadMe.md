@@ -19,7 +19,7 @@ The REST API is running on [Localhost](http://localhost:8000) with a complete [d
 However, you need to start [Docker](#docker) for this.
 
 ## Screenshots
-...
+![Screenshot](./screenshots/Screenshot.png)
 
 ## Test-Coverage
 
@@ -58,6 +58,7 @@ However, you need to start [Docker](#docker) for this.
 | frontend/start_handler.py | 75.2% |
 | **Projekt** | **83.7%** |
 
+---
 #### Original Repo
-The link to the original Repo, where I was a Collaborator, can be seen here: https://github.com/milannal1m/EverydayPDA
+The link to the original Repo, where I was a Collaborator, can be seen here: https://github.com/milannal1m/EverydayPDA.
 This Repo has been created for changing the README.md for display.
