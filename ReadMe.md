@@ -1,14 +1,27 @@
 
 # EverydayPDA
 
-## Table of Contents
+## Start Application
 
-1. [Coverage](#coverage)
-2. [API](#api)
-3. [Docker](#docker)
-4. [GIT](#git)
+Start Docker:
+```bash
+docker compose up -d --build
+```
 
-## Coverage
+## Telegram
+
+After starting the Bot, you can add it to your Telegram contacts (@EverydayPDA_bot).
+
+## API
+
+The REST API is running on [Localhost](http://localhost:8000) with a complete [documentation](http://localhost:8000/docs).
+
+However, you need to start [Docker](#docker) for this.
+
+## Screenshots
+...
+
+## Test-Coverage
 
 ![Coverage](https://img.shields.io/badge/Coverage-83.7%25-brightgreen)
 
@@ -45,15 +58,5 @@
 | frontend/start_handler.py | 75.2% |
 | **Projekt** | **83.7%** |
 
-## API
-
-The REST API is running on [Localhost](http://localhost:8000) with a complete [documentation](http://localhost:8000/docs).
-
-However, you need to start [Docker](#docker) for this.
-
-## Docker
-
-Start Docker:
-```bash
-docker compose up -d --build
-```
+#### Original Repo
+  https://github.com/milannal1m/EverydayPDA
